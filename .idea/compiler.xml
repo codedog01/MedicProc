@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="medicproc-admin" />
+        <module name="medicproc-quartz" />
+        <module name="medicproc-generator" />
+        <module name="medicproc-common" />
+        <module name="medicproc-framework" />
+        <module name="medicproc-system" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="medicproc-server" target="1.8" />
+      <module name="medicproc-services" target="1.8" />
+      <module name="MedicProc-system" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
