@@ -9,6 +9,8 @@ import com.yibai.medicproc.common.constant.Constants;
 import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.common.utils.http.HttpUtils;
 
+import java.util.HashMap;
+
 /**
  * 获取地址类
  * 
@@ -35,7 +37,7 @@ public class AddressUtils
         {
             try
             {
-                String rspStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", Constants.GBK);
+                String rspStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", Constants.GBK, new HashMap<>());
                 if (StringUtils.isEmpty(rspStr))
                 {
                     log.error("获取地理位置异常 {}", ip);

@@ -11,6 +11,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
+import java.util.Map;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -21,6 +23,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.yibai.medicproc.common.constant.Constants;
 import com.yibai.medicproc.common.utils.StringUtils;
+
+import static java.net.Proxy.Type.HTTP;
 
 /**
  * 通用http发送方法
@@ -51,9 +55,12 @@ public class HttpUtils
      */
     public static String sendGet(String url, String param)
     {
-        return sendGet(url, param, Constants.UTF8);
+        return sendGet(url, param, Constants.UTF8,new HashMap<>());
     }
 
+    public static String sendGet(String url, String param,  Map<String, String> headerMap) {
+        return sendGet(url, param, Constants.UTF8, headerMap);
+    }
     /**
      * 向指定 URL 发送GET方法的请求
      *
@@ -62,7 +69,7 @@ public class HttpUtils
      * @param contentType 编码类型
      * @return 所代表远程资源的响应结果
      */
-    public static String sendGet(String url, String param, String contentType)
+    public static String sendGet(String url, String param, String contentType, Map<String, String> headerMap)
     {
         StringBuilder result = new StringBuilder();
         BufferedReader in = null;
@@ -75,6 +82,9 @@ public class HttpUtils
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+            for (String key : headerMap.keySet()) {
+                connection.setRequestProperty(key, headerMap.get(key));
+            }
             connection.connect();
             in = new BufferedReader(new InputStreamReader(connection.getInputStream(), contentType));
             String line;
@@ -117,20 +127,23 @@ public class HttpUtils
         return result.toString();
     }
 
+
+    public static String sendPost(String url, String param){
+        return sendPost(url, param, new HashMap<>());
+    }
+
     /**
      * 向指定 URL 发送POST方法的请求
      *
-     * @param url 发送请求的 URL
+     * @param url   发送请求的 URL
      * @param param 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
      * @return 所代表远程资源的响应结果
      */
-    public static String sendPost(String url, String param)
-    {
+    public static String sendPost(String url, String param, Map<String, String> headerMap) {
         PrintWriter out = null;
         BufferedReader in = null;
         StringBuilder result = new StringBuilder();
-        try
-        {
+        try {
             log.info("sendPost - {}", url);
             URL realUrl = new URL(url);
             URLConnection conn = realUrl.openConnection();
@@ -138,7 +151,10 @@ public class HttpUtils
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
             conn.setRequestProperty("Accept-Charset", "utf-8");
-            conn.setRequestProperty("contentType", "utf-8");
+            conn.setRequestProperty("Content-Type", "application/json");
+            for (String key : headerMap.keySet()) {
+                conn.setRequestProperty(key, headerMap.get(key));
+            }
             conn.setDoOutput(true);
             conn.setDoInput(true);
             out = new PrintWriter(conn.getOutputStream());
@@ -146,43 +162,27 @@ public class HttpUtils
             out.flush();
             in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
             String line;
-            while ((line = in.readLine()) != null)
-            {
+            while ((line = in.readLine()) != null) {
                 result.append(line);
             }
             log.info("recv - {}", result);
-        }
-        catch (ConnectException e)
-        {
+        } catch (ConnectException e) {
             log.error("调用HttpUtils.sendPost ConnectException, url=" + url + ",param=" + param, e);
-        }
-        catch (SocketTimeoutException e)
-        {
+        } catch (SocketTimeoutException e) {
             log.error("调用HttpUtils.sendPost SocketTimeoutException, url=" + url + ",param=" + param, e);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             log.error("调用HttpUtils.sendPost IOException, url=" + url + ",param=" + param, e);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("调用HttpsUtil.sendPost Exception, url=" + url + ",param=" + param, e);
-        }
-        finally
-        {
-            try
-            {
-                if (out != null)
-                {
+        } finally {
+            try {
+                if (out != null) {
                     out.close();
                 }
-                if (in != null)
-                {
+                if (in != null) {
                     in.close();
                 }
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 log.error("调用in.close Exception, url=" + url + ",param=" + param, ex);
             }
         }
