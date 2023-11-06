@@ -1,12 +1,15 @@
-package com.yibai.medicproc.web.controller;
+package com.yibai.medicproc.web.controller.dataease;
 
+import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
+import com.yibai.medicproc.common.core.domain.entity.SysUser;
 import com.yibai.medicproc.common.core.domain.model.LoginUser;
 import com.yibai.medicproc.common.utils.encrypt.EncryptUtils;
 import com.yibai.medicproc.common.utils.encrypt.RsaUtil;
 import com.yibai.medicproc.common.utils.http.HttpUtils;
 import com.yibai.medicproc.framework.web.service.TokenService;
 import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.util.Base64Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +23,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/dataEaseSSO")
+@RequestMapping("/dataEase")
 public class DataEaseLoginController {
 
     @Autowired
@@ -48,7 +51,7 @@ public class DataEaseLoginController {
     }
 
     // 同域跳转，适用于同一根域名不同系统之间跳转
-    @GetMapping("/ssoCall")
+    @GetMapping("/login")
     public void toDataEase(HttpServletRequest request, HttpServletResponse response) throws Exception {
         LoginUser loginUser = tokenService.getLoginUser(request);
         Cookie cookie = new Cookie("Authorization", getToken( loginUser));
@@ -81,39 +84,68 @@ public class DataEaseLoginController {
 
         initSignature();
         String usernameEn = RsaUtil.encryptByPublicKey(publicKey, loginUser.getUsername());
-        String password = RsaUtil.encryptByPublicKey(publicKey, PASSWORD);
-        updatePassword(loginUser.getUsername(), PASSWORD);
+        String passwordEn = RsaUtil.encryptByPublicKey(publicKey, PASSWORD);
+        //查询用户
+        String userId = getUserIdInDataEase(loginUser.getUsername());
+        //  没有则注册用户
+        if (StringUtils.isEmpty(userId)) {
+            SysUser user = loginUser.getUser();
 
+            String body = "{\"id\":null," +
+                    "\"username\":\"" + user.getUserName()+"\","+
+                    "\"nickName\":\"" + user.getNickName()+"\","+
+                    "\"gender\":\"男\"," +
+                    "\"email\":\""  + user.getPhonenumber()+"\","+
+                    "\"enabled\":1," +
+                    "\"deptId\":\""+user.getDeptId() +"\","+
+                    "\"phone\":\"" + user.getPhonenumber()+"\","+
+                    "\"phonePrefix\":\"+86\"," +
+                    "\"roleIds\":[2]," +
+                    "\"sysUserAssist\":{\"wecomId\":null,\"dingtalkId\":null,\"larkId\":null}}";
+            String result = HttpUtils.sendPost(dataeaseEndpoint + "/api/user/create", body, headerMap);
+            userId = getUserIdInDataEase(loginUser.getUsername());
+        }
+        //  修改密码
+        updatePassword(userId, PASSWORD);
+
+        //  登录获取token
         String body = "{\n" +
                 "  \"loginType\": 0,\n" +
-                "  \"password\": \"" + password + "\",\n" +
+                "  \"password\": \"" + passwordEn + "\",\n" +
                 "  \"username\": \"" + usernameEn + "\"\n" +
                 "}";
         String result = HttpUtils.sendPost(dataeaseEndpoint + "/api/auth/login", body, headerMap);
-        // todo 如果没有用户则注册
         return JSONObject.parseObject(result).getJSONObject("data").getString("token");
     }
 
     /**
      * 修改用户密码
      *
-     * @param username
+     * @param userId
      * @param password
      */
-    private void updatePassword(String username, String password) {
-        String userId = getUserId(username);
+    private void updatePassword(String userId, String password) {
+        /* 1.18.8 以后的版本需要使用 Base64 加密 password, */
         String body = "{\n" +
-                "  \"newPassword\": \"" + Base64Util.encode(password)/* 1.18.8 以后的版本需要使用 Base64 加密 password, 小于等于 1.18.7 的版本请移除 Base64 加密方法 */ + "\",\n" +
+                "  \"newPassword\": \"" + Base64Util.encode(password)+ "\",\n" +
                 "  \"userId\": " + userId + "\n" +
                 "}";
         String result = HttpUtils.sendPost(dataeaseEndpoint + "/api/user/adminUpdatePwd", body, headerMap);
         JSONObject jsonObject = JSONObject.parseObject(result);
         Boolean success = jsonObject.getBoolean("success");
+        Object data = jsonObject.get("data");
+
+
+        if (data == null) {
+
+        }
+
         if (BooleanUtils.isNotTrue(success)) {
             throw new RuntimeException("密码修改失败！");
         }
     }
 
+//    regist
 
     /**
      * 根据用户名获取用户 ID
@@ -121,12 +153,16 @@ public class DataEaseLoginController {
      * @param username 用户名(唯一标识)
      * @return
      */
-    private String getUserId(String username) {
+    private String getUserIdInDataEase(String username) {
         String body = "{\n" +
-                "\"keyword\": \"" + username + "\"\n" +
+                "\"username\": \"" + username + "\"\n" +
                 "}";
         String result = HttpUtils.sendPost(dataeaseEndpoint + "/api/user/userGrid/1/1", body,headerMap);
         JSONObject jsonObject = JSONObject.parseObject(result);
-        return jsonObject.getJSONObject("data").getJSONArray("listObject").getJSONObject(0).getString("userId");
+        JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("listObject");
+        if (jsonArray.isEmpty()) {
+            return "";
+        }
+        return jsonArray.getJSONObject(0).getString("userId");
     }
 }
