@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+
+import com.yibai.medicproc.system.base.domain.SysCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -19,11 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yibai.medicproc.common.constant.CacheConstants;
 import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.system.domain.SysCache;
 
 /**
  * 缓存监控
- * 
+ *
  * @author ruoyi
  */
 @RestController

@@ -3,15 +3,15 @@ package com.yibai.medicproc.common.core.domain.entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import com.yibai.medicproc.common.annotation.Excel;
+import com.yibai.medicproc.common.core.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.yibai.medicproc.common.annotation.Excel;
-import com.yibai.medicproc.common.annotation.Excel.ColumnType;
-import com.yibai.medicproc.common.core.domain.BaseEntity;
 
 /**
  * 字典类型表 sys_dict_type
- * 
+ *
  * @author ruoyi
  */
 public class SysDictType extends BaseEntity
@@ -19,7 +19,7 @@ public class SysDictType extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 字典主键 */
-    @Excel(name = "字典主键", cellType = ColumnType.NUMERIC)
+    @Excel(name = "字典主键", cellType = Excel.ColumnType.NUMERIC)
     private Long dictId;
 
     /** 字典名称 */
@@ -78,7 +78,7 @@ public class SysDictType extends BaseEntity
     {
         this.status = status;
     }
-    
+
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)

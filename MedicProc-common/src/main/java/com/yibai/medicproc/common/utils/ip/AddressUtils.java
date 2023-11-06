@@ -1,19 +1,19 @@
 package com.yibai.medicproc.common.utils.ip;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
 import com.yibai.medicproc.common.config.RuoYiConfig;
 import com.yibai.medicproc.common.constant.Constants;
 import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.common.utils.http.HttpUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 
 import java.util.HashMap;
 
 /**
  * 获取地址类
- * 
+ *
  * @author ruoyi
  */
 public class AddressUtils

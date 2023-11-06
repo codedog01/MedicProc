@@ -2,6 +2,8 @@ package com.yibai.medicproc.web.controller.system;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yibai.medicproc.system.base.domain.SysConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -19,12 +21,11 @@ import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.page.TableDataInfo;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.poi.ExcelUtil;
-import com.yibai.medicproc.system.domain.SysConfig;
-import com.yibai.medicproc.system.service.ISysConfigService;
+import com.yibai.medicproc.system.base.service.ISysConfigService;
 
 /**
  * 参数配置 信息操作处理
- * 
+ *
  * @author ruoyi
  */
 @RestController

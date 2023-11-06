@@ -1,6 +1,10 @@
 package com.yibai.medicproc.framework.web.service;
 
 import java.util.concurrent.TimeUnit;
+
+import com.yibai.medicproc.framework.manager.AsyncManager;
+import com.yibai.medicproc.framework.manager.factory.AsyncFactory;
+import com.yibai.medicproc.framework.security.context.AuthenticationContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -13,13 +17,10 @@ import com.yibai.medicproc.common.exception.user.UserPasswordNotMatchException;
 import com.yibai.medicproc.common.exception.user.UserPasswordRetryLimitExceedException;
 import com.yibai.medicproc.common.utils.MessageUtils;
 import com.yibai.medicproc.common.utils.SecurityUtils;
-import com.yibai.medicproc.framework.manager.AsyncManager;
-import com.yibai.medicproc.framework.manager.factory.AsyncFactory;
-import com.yibai.medicproc.framework.security.context.AuthenticationContextHolder;
 
 /**
  * 登录密码方法
- * 
+ *
  * @author ruoyi
  */
 @Component
@@ -36,7 +37,7 @@ public class SysPasswordService
 
     /**
      * 登录账户密码错误次数缓存键名
-     * 
+     *
      * @param username 用户名
      * @return 缓存键key
      */

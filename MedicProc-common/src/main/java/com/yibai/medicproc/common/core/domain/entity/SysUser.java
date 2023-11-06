@@ -3,18 +3,17 @@ package com.yibai.medicproc.common.core.domain.entity;
 import java.util.Date;
 import java.util.List;
 import javax.validation.constraints.*;
+
+import com.yibai.medicproc.common.annotation.Excel;
+import com.yibai.medicproc.common.annotation.Excels;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.yibai.medicproc.common.annotation.Excel;
-import com.yibai.medicproc.common.annotation.Excel.ColumnType;
-import com.yibai.medicproc.common.annotation.Excel.Type;
-import com.yibai.medicproc.common.annotation.Excels;
 import com.yibai.medicproc.common.core.domain.BaseEntity;
 import com.yibai.medicproc.common.xss.Xss;
 
 /**
  * 用户对象 sys_user
- * 
+ *
  * @author ruoyi
  */
 public class SysUser extends BaseEntity
@@ -22,11 +21,11 @@ public class SysUser extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 用户ID */
-    @Excel(name = "用户序号", cellType = ColumnType.NUMERIC, prompt = "用户编号")
+    @Excel(name = "用户序号", cellType = Excel.ColumnType.NUMERIC, prompt = "用户编号")
     private Long userId;
 
     /** 部门ID */
-    @Excel(name = "部门编号", type = Type.IMPORT)
+    @Excel(name = "部门编号", type = Excel.Type.IMPORT)
     private Long deptId;
 
     /** 用户账号 */
@@ -63,17 +62,17 @@ public class SysUser extends BaseEntity
     private String delFlag;
 
     /** 最后登录IP */
-    @Excel(name = "最后登录IP", type = Type.EXPORT)
+    @Excel(name = "最后登录IP", type = Excel.Type.EXPORT)
     private String loginIp;
 
     /** 最后登录时间 */
-    @Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
+    @Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Excel.Type.EXPORT)
     private Date loginDate;
 
     /** 部门对象 */
     @Excels({
-        @Excel(name = "部门名称", targetAttr = "deptName", type = Type.EXPORT),
-        @Excel(name = "部门负责人", targetAttr = "leader", type = Type.EXPORT)
+        @Excel(name = "部门名称", targetAttr = "deptName", type = Excel.Type.EXPORT),
+        @Excel(name = "部门负责人", targetAttr = "leader", type = Excel.Type.EXPORT)
     })
     private SysDept dept;
 

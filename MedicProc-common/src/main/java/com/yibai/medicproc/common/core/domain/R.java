@@ -1,6 +1,7 @@
 package com.yibai.medicproc.common.core.domain;
 
 import java.io.Serializable;
+
 import com.yibai.medicproc.common.constant.HttpStatus;
 
 /**

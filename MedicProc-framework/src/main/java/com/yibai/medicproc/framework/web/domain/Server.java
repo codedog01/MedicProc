@@ -4,9 +4,10 @@ import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+
+import com.yibai.medicproc.framework.web.domain.server.Cpu;
 import com.yibai.medicproc.common.utils.Arith;
 import com.yibai.medicproc.common.utils.ip.IpUtils;
-import com.yibai.medicproc.framework.web.domain.server.Cpu;
 import com.yibai.medicproc.framework.web.domain.server.Jvm;
 import com.yibai.medicproc.framework.web.domain.server.Mem;
 import com.yibai.medicproc.framework.web.domain.server.Sys;
@@ -23,13 +24,13 @@ import oshi.util.Util;
 
 /**
  * 服务器相关信息
- * 
+ *
  * @author ruoyi
  */
 public class Server
 {
     private static final int OSHI_WAIT_SECOND = 1000;
-    
+
     /**
      * CPU相关信息
      */
@@ -209,7 +210,7 @@ public class Server
 
     /**
      * 字节转换
-     * 
+     *
      * @param size 字节大小
      * @return 转换后值
      */

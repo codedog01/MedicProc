@@ -2,6 +2,9 @@ package com.yibai.medicproc.quartz.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yibai.medicproc.quartz.domain.SysJobLog;
+import com.yibai.medicproc.quartz.service.ISysJobLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,12 +19,10 @@ import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.page.TableDataInfo;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.poi.ExcelUtil;
-import com.yibai.medicproc.quartz.domain.SysJobLog;
-import com.yibai.medicproc.quartz.service.ISysJobLogService;
 
 /**
  * 调度日志操作处理
- * 
+ *
  * @author ruoyi
  */
 @RestController
@@ -55,7 +56,7 @@ public class SysJobLogController extends BaseController
         ExcelUtil<SysJobLog> util = new ExcelUtil<SysJobLog>(SysJobLog.class);
         util.exportExcel(response, list, "调度日志");
     }
-    
+
     /**
      * 根据调度编号获取详细信息
      */

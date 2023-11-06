@@ -9,12 +9,13 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import com.yibai.medicproc.common.utils.http.HttpHelper;
+
 import com.yibai.medicproc.common.constant.Constants;
+import com.yibai.medicproc.common.utils.http.HttpHelper;
 
 /**
  * 构建可重复读取inputStream的request
- * 
+ *
  * @author ruoyi
  */
 public class RepeatedlyRequestWrapper extends HttpServletRequestWrapper

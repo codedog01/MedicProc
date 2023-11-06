@@ -19,11 +19,11 @@ import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.domain.entity.SysMenu;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.system.service.ISysMenuService;
+import com.yibai.medicproc.system.base.service.ISysMenuService;
 
 /**
  * 菜单信息
- * 
+ *
  * @author ruoyi
  */
 @RestController

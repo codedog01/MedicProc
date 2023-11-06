@@ -26,10 +26,10 @@ import com.yibai.medicproc.common.utils.StringUtils;
 
 /**
  * Mybatis支持*匹配扫描包
- * 
+ *
  * @author ruoyi
  */
-@Configuration
+//@Configuration
 public class MyBatisConfig
 {
     @Autowired

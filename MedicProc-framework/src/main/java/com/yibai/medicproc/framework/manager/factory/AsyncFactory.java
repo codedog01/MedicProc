@@ -1,6 +1,9 @@
 package com.yibai.medicproc.framework.manager.factory;
 
 import java.util.TimerTask;
+
+import com.yibai.medicproc.system.base.domain.SysLogininfor;
+import com.yibai.medicproc.system.base.domain.SysOperLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.yibai.medicproc.common.constant.Constants;
@@ -10,15 +13,13 @@ import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.common.utils.ip.AddressUtils;
 import com.yibai.medicproc.common.utils.ip.IpUtils;
 import com.yibai.medicproc.common.utils.spring.SpringUtils;
-import com.yibai.medicproc.system.domain.SysLogininfor;
-import com.yibai.medicproc.system.domain.SysOperLog;
-import com.yibai.medicproc.system.service.ISysLogininforService;
-import com.yibai.medicproc.system.service.ISysOperLogService;
+import com.yibai.medicproc.system.base.service.ISysLogininforService;
+import com.yibai.medicproc.system.base.service.ISysOperLogService;
 import eu.bitwalker.useragentutils.UserAgent;
 
 /**
  * 异步工厂（产生任务用）
- * 
+ *
  * @author ruoyi
  */
 public class AsyncFactory
@@ -27,7 +28,7 @@ public class AsyncFactory
 
     /**
      * 记录登录信息
-     * 
+     *
      * @param username 用户名
      * @param status 状态
      * @param message 消息
@@ -82,7 +83,7 @@ public class AsyncFactory
 
     /**
      * 操作日志记录
-     * 
+     *
      * @param operLog 操作日志信息
      * @return 任务task
      */

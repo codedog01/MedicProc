@@ -16,7 +16,7 @@ import com.yibai.medicproc.common.enums.HttpMethod;
 
 /**
  * 防止XSS攻击的过滤器
- * 
+ *
  * @author ruoyi
  */
 public class XssFilter implements Filter

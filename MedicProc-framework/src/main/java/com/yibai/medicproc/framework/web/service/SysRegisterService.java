@@ -1,5 +1,7 @@
 package com.yibai.medicproc.framework.web.service;
 
+import com.yibai.medicproc.framework.manager.AsyncManager;
+import com.yibai.medicproc.framework.manager.factory.AsyncFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.yibai.medicproc.common.constant.CacheConstants;
@@ -13,14 +15,12 @@ import com.yibai.medicproc.common.exception.user.CaptchaExpireException;
 import com.yibai.medicproc.common.utils.MessageUtils;
 import com.yibai.medicproc.common.utils.SecurityUtils;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.framework.manager.AsyncManager;
-import com.yibai.medicproc.framework.manager.factory.AsyncFactory;
-import com.yibai.medicproc.system.service.ISysConfigService;
-import com.yibai.medicproc.system.service.ISysUserService;
+import com.yibai.medicproc.system.base.service.ISysConfigService;
+import com.yibai.medicproc.system.base.service.ISysUserService;
 
 /**
  * 注册校验方法
- * 
+ *
  * @author ruoyi
  */
 @Component
@@ -92,7 +92,7 @@ public class SysRegisterService
 
     /**
      * 校验验证码
-     * 
+     *
      * @param username 用户名
      * @param code 验证码
      * @param uuid 唯一标识

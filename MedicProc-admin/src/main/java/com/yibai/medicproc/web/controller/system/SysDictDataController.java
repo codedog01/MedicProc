@@ -22,12 +22,12 @@ import com.yibai.medicproc.common.core.page.TableDataInfo;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.common.utils.poi.ExcelUtil;
-import com.yibai.medicproc.system.service.ISysDictDataService;
-import com.yibai.medicproc.system.service.ISysDictTypeService;
+import com.yibai.medicproc.system.base.service.ISysDictDataService;
+import com.yibai.medicproc.system.base.service.ISysDictTypeService;
 
 /**
  * 数据字典信息
- * 
+ *
  * @author ruoyi
  */
 @RestController

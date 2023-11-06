@@ -2,7 +2,7 @@ package com.yibai.medicproc.common.enums;
 
 /**
  * 操作状态
- * 
+ *
  * @author ruoyi
  *
  */

@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.sql.DataSource;
+
+import com.yibai.medicproc.framework.datasource.DynamicDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -22,11 +24,10 @@ import com.alibaba.druid.util.Utils;
 import com.yibai.medicproc.common.enums.DataSourceType;
 import com.yibai.medicproc.common.utils.spring.SpringUtils;
 import com.yibai.medicproc.framework.config.properties.DruidProperties;
-import com.yibai.medicproc.framework.datasource.DynamicDataSource;
 
 /**
  * druid 配置多数据源
- * 
+ *
  * @author ruoyi
  */
 @Configuration
@@ -58,10 +59,10 @@ public class DruidConfig
         setDataSource(targetDataSources, DataSourceType.SLAVE.name(), "slaveDataSource");
         return new DynamicDataSource(masterDataSource, targetDataSources);
     }
-    
+
     /**
      * 设置数据源
-     * 
+     *
      * @param targetDataSources 备选数据源集合
      * @param sourceName 数据源名称
      * @param beanName bean名称

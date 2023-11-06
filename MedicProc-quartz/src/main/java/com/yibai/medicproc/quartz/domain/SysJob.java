@@ -3,6 +3,8 @@ package com.yibai.medicproc.quartz.domain;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.yibai.medicproc.quartz.util.CronUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -11,11 +13,10 @@ import com.yibai.medicproc.common.annotation.Excel.ColumnType;
 import com.yibai.medicproc.common.constant.ScheduleConstants;
 import com.yibai.medicproc.common.core.domain.BaseEntity;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.quartz.util.CronUtils;
 
 /**
  * 定时任务调度表 sys_job
- * 
+ *
  * @author ruoyi
  */
 public class SysJob extends BaseEntity

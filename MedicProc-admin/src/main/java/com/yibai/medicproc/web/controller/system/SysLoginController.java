@@ -15,11 +15,11 @@ import com.yibai.medicproc.common.core.domain.model.LoginBody;
 import com.yibai.medicproc.common.utils.SecurityUtils;
 import com.yibai.medicproc.framework.web.service.SysLoginService;
 import com.yibai.medicproc.framework.web.service.SysPermissionService;
-import com.yibai.medicproc.system.service.ISysMenuService;
+import com.yibai.medicproc.system.base.service.ISysMenuService;
 
 /**
  * 登录验证
- * 
+ *
  * @author ruoyi
  */
 @RestController
@@ -36,7 +36,7 @@ public class SysLoginController
 
     /**
      * 登录方法
-     * 
+     *
      * @param loginBody 登录信息
      * @return 结果
      */
@@ -53,7 +53,7 @@ public class SysLoginController
 
     /**
      * 获取用户信息
-     * 
+     *
      * @return 用户信息
      */
     @GetMapping("getInfo")
@@ -73,7 +73,7 @@ public class SysLoginController
 
     /**
      * 获取路由信息
-     * 
+     *
      * @return 路由信息
      */
     @GetMapping("getRouters")

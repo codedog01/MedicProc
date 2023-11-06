@@ -3,27 +3,28 @@ package com.yibai.medicproc.common.core.controller;
 import java.beans.PropertyEditorSupport;
 import java.util.Date;
 import java.util.List;
+
+import com.yibai.medicproc.common.constant.HttpStatus;
+import com.yibai.medicproc.common.utils.DateUtils;
+import com.yibai.medicproc.common.utils.PageUtils;
+import com.yibai.medicproc.common.utils.StringUtils;
+import com.yibai.medicproc.common.utils.sql.SqlUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.yibai.medicproc.common.constant.HttpStatus;
 import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.domain.model.LoginUser;
 import com.yibai.medicproc.common.core.page.PageDomain;
 import com.yibai.medicproc.common.core.page.TableDataInfo;
 import com.yibai.medicproc.common.core.page.TableSupport;
-import com.yibai.medicproc.common.utils.DateUtils;
-import com.yibai.medicproc.common.utils.PageUtils;
 import com.yibai.medicproc.common.utils.SecurityUtils;
-import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.common.utils.sql.SqlUtil;
 
 /**
  * web层通用数据处理
- * 
+ *
  * @author ruoyi
  */
 public class BaseController
@@ -113,7 +114,7 @@ public class BaseController
     {
         return AjaxResult.success(message);
     }
-    
+
     /**
      * 返回成功消息
      */
@@ -140,7 +141,7 @@ public class BaseController
 
     /**
      * 响应返回结果
-     * 
+     *
      * @param rows 影响行数
      * @return 操作结果
      */
@@ -151,7 +152,7 @@ public class BaseController
 
     /**
      * 响应返回结果
-     * 
+     *
      * @param result 结果
      * @return 操作结果
      */

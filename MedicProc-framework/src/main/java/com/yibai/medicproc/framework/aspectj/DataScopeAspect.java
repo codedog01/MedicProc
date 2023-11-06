@@ -2,6 +2,8 @@ package com.yibai.medicproc.framework.aspectj;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.yibai.medicproc.framework.security.context.PermissionContextHolder;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -14,7 +16,6 @@ import com.yibai.medicproc.common.core.domain.model.LoginUser;
 import com.yibai.medicproc.common.core.text.Convert;
 import com.yibai.medicproc.common.utils.SecurityUtils;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.framework.security.context.PermissionContextHolder;
 
 /**
  * 数据过滤处理

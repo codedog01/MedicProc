@@ -2,6 +2,8 @@ package com.yibai.medicproc.web.controller.monitor;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yibai.medicproc.system.base.domain.SysLogininfor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,12 +19,11 @@ import com.yibai.medicproc.common.core.page.TableDataInfo;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.poi.ExcelUtil;
 import com.yibai.medicproc.framework.web.service.SysPasswordService;
-import com.yibai.medicproc.system.domain.SysLogininfor;
-import com.yibai.medicproc.system.service.ISysLogininforService;
+import com.yibai.medicproc.system.base.service.ISysLogininforService;
 
 /**
  * 系统访问记录
- * 
+ *
  * @author ruoyi
  */
 @RestController
@@ -30,7 +31,7 @@ import com.yibai.medicproc.system.service.ISysLogininforService;
 public class SysLogininforController extends BaseController
 {
     @Autowired
-    private ISysLogininforService logininforService;
+    private ISysLogininforService sysLogininforServiceImpl;
 
     @Autowired
     private SysPasswordService passwordService;
@@ -40,7 +41,7 @@ public class SysLogininforController extends BaseController
     public TableDataInfo list(SysLogininfor logininfor)
     {
         startPage();
-        List<SysLogininfor> list = logininforService.selectLogininforList(logininfor);
+        List<SysLogininfor> list = sysLogininforServiceImpl.selectLogininforList(logininfor);
         return getDataTable(list);
     }
 
@@ -49,7 +50,7 @@ public class SysLogininforController extends BaseController
     @PostMapping("/export")
     public void export(HttpServletResponse response, SysLogininfor logininfor)
     {
-        List<SysLogininfor> list = logininforService.selectLogininforList(logininfor);
+        List<SysLogininfor> list = sysLogininforServiceImpl.selectLogininforList(logininfor);
         ExcelUtil<SysLogininfor> util = new ExcelUtil<SysLogininfor>(SysLogininfor.class);
         util.exportExcel(response, list, "登录日志");
     }
@@ -59,7 +60,7 @@ public class SysLogininforController extends BaseController
     @DeleteMapping("/{infoIds}")
     public AjaxResult remove(@PathVariable Long[] infoIds)
     {
-        return toAjax(logininforService.deleteLogininforByIds(infoIds));
+        return toAjax(sysLogininforServiceImpl.deleteLogininforByIds(infoIds));
     }
 
     @PreAuthorize("@ss.hasPermi('monitor:logininfor:remove')")
@@ -67,7 +68,7 @@ public class SysLogininforController extends BaseController
     @DeleteMapping("/clean")
     public AjaxResult clean()
     {
-        logininforService.cleanLogininfor();
+        sysLogininforServiceImpl.cleanLogininfor();
         return success();
     }
 

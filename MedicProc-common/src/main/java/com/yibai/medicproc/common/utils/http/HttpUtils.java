@@ -19,16 +19,15 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
+import com.yibai.medicproc.common.constant.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.yibai.medicproc.common.constant.Constants;
 import com.yibai.medicproc.common.utils.StringUtils;
-
-import static java.net.Proxy.Type.HTTP;
 
 /**
  * 通用http发送方法
- * 
+ *
  * @author ruoyi
  */
 public class HttpUtils

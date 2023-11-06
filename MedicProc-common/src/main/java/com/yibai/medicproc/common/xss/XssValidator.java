@@ -1,6 +1,7 @@
 package com.yibai.medicproc.common.xss;
 
 import com.yibai.medicproc.common.utils.StringUtils;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
@@ -8,7 +9,7 @@ import java.util.regex.Pattern;
 
 /**
  * 自定义xss校验注解实现
- * 
+ *
  * @author ruoyi
  */
 public class XssValidator implements ConstraintValidator<Xss, String>

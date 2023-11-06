@@ -21,11 +21,11 @@ import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.common.utils.file.FileUploadUtils;
 import com.yibai.medicproc.common.utils.file.MimeTypeUtils;
 import com.yibai.medicproc.framework.web.service.TokenService;
-import com.yibai.medicproc.system.service.ISysUserService;
+import com.yibai.medicproc.system.base.service.ISysUserService;
 
 /**
  * 个人信息 业务处理
- * 
+ *
  * @author ruoyi
  */
 @RestController

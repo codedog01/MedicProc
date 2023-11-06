@@ -2,6 +2,8 @@ package com.yibai.medicproc.web.controller.monitor;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yibai.medicproc.system.base.domain.SysOperLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,12 +18,11 @@ import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.page.TableDataInfo;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.poi.ExcelUtil;
-import com.yibai.medicproc.system.domain.SysOperLog;
-import com.yibai.medicproc.system.service.ISysOperLogService;
+import com.yibai.medicproc.system.base.service.ISysOperLogService;
 
 /**
  * 操作日志记录
- * 
+ *
  * @author ruoyi
  */
 @RestController

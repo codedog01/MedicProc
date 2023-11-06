@@ -20,12 +20,12 @@ import com.yibai.medicproc.common.core.page.TableDataInfo;
 import com.yibai.medicproc.common.core.redis.RedisCache;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.system.domain.SysUserOnline;
-import com.yibai.medicproc.system.service.ISysUserOnlineService;
+import com.yibai.medicproc.system.base.domain.SysUserOnline;
+import com.yibai.medicproc.system.base.service.ISysUserOnlineService;
 
 /**
  * 在线用户监控
- * 
+ *
  * @author ruoyi
  */
 @RestController

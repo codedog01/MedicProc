@@ -1,6 +1,8 @@
 package com.yibai.medicproc.framework.aspectj;
 
 import java.util.Objects;
+
+import com.yibai.medicproc.framework.datasource.DynamicDataSourceContextHolder;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,11 +15,10 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import com.yibai.medicproc.common.annotation.DataSource;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.framework.datasource.DynamicDataSourceContextHolder;
 
 /**
  * 多数据源处理
- * 
+ *
  * @author ruoyi
  */
 @Aspect

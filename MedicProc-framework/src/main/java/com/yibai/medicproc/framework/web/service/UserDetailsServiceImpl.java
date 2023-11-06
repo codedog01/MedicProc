@@ -13,7 +13,7 @@ import com.yibai.medicproc.common.enums.UserStatus;
 import com.yibai.medicproc.common.exception.ServiceException;
 import com.yibai.medicproc.common.utils.MessageUtils;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.system.service.ISysUserService;
+import com.yibai.medicproc.system.base.service.ISysUserService;
 
 /**
  * 用户验证处理
@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
 
     @Autowired
     private ISysUserService userService;
-    
+
     @Autowired
     private SysPasswordService passwordService;
 

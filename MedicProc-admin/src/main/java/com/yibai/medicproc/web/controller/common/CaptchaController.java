@@ -18,11 +18,11 @@ import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.redis.RedisCache;
 import com.yibai.medicproc.common.utils.sign.Base64;
 import com.yibai.medicproc.common.utils.uuid.IdUtils;
-import com.yibai.medicproc.system.service.ISysConfigService;
+import com.yibai.medicproc.system.base.service.ISysConfigService;
 
 /**
  * 验证码操作处理
- * 
+ *
  * @author ruoyi
  */
 @RestController
@@ -36,9 +36,9 @@ public class CaptchaController
 
     @Autowired
     private RedisCache redisCache;
-    
+
     @Autowired
-    private ISysConfigService configService;
+    private ISysConfigService sysConfigServiceImpl;
     /**
      * 生成验证码
      */
@@ -46,7 +46,7 @@ public class CaptchaController
     public AjaxResult getCode(HttpServletResponse response) throws IOException
     {
         AjaxResult ajax = AjaxResult.success();
-        boolean captchaEnabled = configService.selectCaptchaEnabled();
+        boolean captchaEnabled = sysConfigServiceImpl.selectCaptchaEnabled();
         ajax.put("captchaEnabled", captchaEnabled);
         if (!captchaEnabled)
         {

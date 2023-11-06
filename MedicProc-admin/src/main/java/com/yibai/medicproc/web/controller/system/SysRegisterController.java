@@ -9,11 +9,11 @@ import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.domain.model.RegisterBody;
 import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.framework.web.service.SysRegisterService;
-import com.yibai.medicproc.system.service.ISysConfigService;
+import com.yibai.medicproc.system.base.service.ISysConfigService;
 
 /**
  * 注册验证
- * 
+ *
  * @author ruoyi
  */
 @RestController

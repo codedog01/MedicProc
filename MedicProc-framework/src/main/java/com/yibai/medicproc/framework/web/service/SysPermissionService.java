@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import com.yibai.medicproc.common.core.domain.entity.SysRole;
 import com.yibai.medicproc.common.core.domain.entity.SysUser;
-import com.yibai.medicproc.system.service.ISysMenuService;
-import com.yibai.medicproc.system.service.ISysRoleService;
+import com.yibai.medicproc.system.base.service.ISysMenuService;
+import com.yibai.medicproc.system.base.service.ISysRoleService;
 
 /**
  * 用户权限处理
- * 
+ *
  * @author ruoyi
  */
 @Component
@@ -27,7 +27,7 @@ public class SysPermissionService
 
     /**
      * 获取角色数据权限
-     * 
+     *
      * @param user 用户信息
      * @return 角色权限信息
      */
@@ -48,7 +48,7 @@ public class SysPermissionService
 
     /**
      * 获取菜单数据权限
-     * 
+     *
      * @param user 用户信息
      * @return 菜单权限信息
      */

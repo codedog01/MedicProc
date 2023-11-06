@@ -1,13 +1,13 @@
 package com.yibai.medicproc.common.utils;
 
 import com.github.pagehelper.PageHelper;
+import com.yibai.medicproc.common.utils.sql.SqlUtil;
 import com.yibai.medicproc.common.core.page.PageDomain;
 import com.yibai.medicproc.common.core.page.TableSupport;
-import com.yibai.medicproc.common.utils.sql.SqlUtil;
 
 /**
  * 分页工具类
- * 
+ *
  * @author ruoyi
  */
 public class PageUtils extends PageHelper

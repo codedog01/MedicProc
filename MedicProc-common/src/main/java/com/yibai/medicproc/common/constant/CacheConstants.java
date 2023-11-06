@@ -2,7 +2,7 @@ package com.yibai.medicproc.common.constant;
 
 /**
  * 缓存的key 常量
- * 
+ *
  * @author ruoyi
  */
 public class CacheConstants

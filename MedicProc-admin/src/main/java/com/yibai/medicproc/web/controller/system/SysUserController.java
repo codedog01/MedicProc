@@ -27,14 +27,14 @@ import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.SecurityUtils;
 import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.common.utils.poi.ExcelUtil;
-import com.yibai.medicproc.system.service.ISysDeptService;
-import com.yibai.medicproc.system.service.ISysPostService;
-import com.yibai.medicproc.system.service.ISysRoleService;
-import com.yibai.medicproc.system.service.ISysUserService;
+import com.yibai.medicproc.system.base.service.ISysDeptService;
+import com.yibai.medicproc.system.base.service.ISysPostService;
+import com.yibai.medicproc.system.base.service.ISysRoleService;
+import com.yibai.medicproc.system.base.service.ISysUserService;
 
 /**
  * 用户信息
- * 
+ *
  * @author ruoyi
  */
 @RestController

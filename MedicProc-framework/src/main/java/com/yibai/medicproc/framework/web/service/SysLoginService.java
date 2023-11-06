@@ -1,6 +1,10 @@
 package com.yibai.medicproc.framework.web.service;
 
 import javax.annotation.Resource;
+
+import com.yibai.medicproc.framework.manager.AsyncManager;
+import com.yibai.medicproc.framework.manager.factory.AsyncFactory;
+import com.yibai.medicproc.framework.security.context.AuthenticationContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -23,15 +27,12 @@ import com.yibai.medicproc.common.utils.DateUtils;
 import com.yibai.medicproc.common.utils.MessageUtils;
 import com.yibai.medicproc.common.utils.StringUtils;
 import com.yibai.medicproc.common.utils.ip.IpUtils;
-import com.yibai.medicproc.framework.manager.AsyncManager;
-import com.yibai.medicproc.framework.manager.factory.AsyncFactory;
-import com.yibai.medicproc.framework.security.context.AuthenticationContextHolder;
-import com.yibai.medicproc.system.service.ISysConfigService;
-import com.yibai.medicproc.system.service.ISysUserService;
+import com.yibai.medicproc.system.base.service.ISysConfigService;
+import com.yibai.medicproc.system.base.service.ISysUserService;
 
 /**
  * 登录校验方法
- * 
+ *
  * @author ruoyi
  */
 @Component
@@ -45,7 +46,7 @@ public class SysLoginService
 
     @Autowired
     private RedisCache redisCache;
-    
+
     @Autowired
     private ISysUserService userService;
 
@@ -54,7 +55,7 @@ public class SysLoginService
 
     /**
      * 登录验证
-     * 
+     *
      * @param username 用户名
      * @param password 密码
      * @param code 验证码
@@ -102,7 +103,7 @@ public class SysLoginService
 
     /**
      * 校验验证码
-     * 
+     *
      * @param username 用户名
      * @param code 验证码
      * @param uuid 唯一标识

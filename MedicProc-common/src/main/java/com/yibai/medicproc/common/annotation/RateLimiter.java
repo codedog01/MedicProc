@@ -10,7 +10,7 @@ import com.yibai.medicproc.common.enums.LimitType;
 
 /**
  * 限流注解
- * 
+ *
  * @author ruoyi
  */
 @Target(ElementType.METHOD)

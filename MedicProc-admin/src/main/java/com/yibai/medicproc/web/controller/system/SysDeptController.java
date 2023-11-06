@@ -20,11 +20,11 @@ import com.yibai.medicproc.common.core.domain.AjaxResult;
 import com.yibai.medicproc.common.core.domain.entity.SysDept;
 import com.yibai.medicproc.common.enums.BusinessType;
 import com.yibai.medicproc.common.utils.StringUtils;
-import com.yibai.medicproc.system.service.ISysDeptService;
+import com.yibai.medicproc.system.base.service.ISysDeptService;
 
 /**
  * 部门信息
- * 
+ *
  * @author ruoyi
  */
 @RestController
