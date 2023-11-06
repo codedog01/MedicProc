@@ -1,5 +1,6 @@
 package com.yibai.medicproc.web;
 
+import com.yibai.medicproc.RuoYiApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

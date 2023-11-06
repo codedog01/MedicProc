@@ -1,4 +1,4 @@
-package com.yibai.medicproc.web;
+package com.yibai.medicproc;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -11,8 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
  *
  * @author ruoyi
  */
-@SpringBootApplication(scanBasePackages = {"com.yibai.medicproc"}, exclude = {DataSourceAutoConfiguration.class})
-@MapperScan("com.yibai.medicproc.*.mapper")
+@SpringBootApplication( exclude = {DataSourceAutoConfiguration.class})
+//@MapperScan("com.yibai.medicproc.*.mapper")
 public class RuoYiApplication {
     public static void main(String[] args) {
         // System.setProperty("spring.devtools.restart.enabled", "false");
