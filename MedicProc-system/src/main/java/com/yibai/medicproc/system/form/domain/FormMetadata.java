@@ -1,7 +1,9 @@
 package com.yibai.medicproc.system.form.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,8 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FormGenerator implements Serializable {
+@TableName("form_metadata")
+public class FormMetadata implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,6 +32,24 @@ public class FormGenerator implements Serializable {
      * id
      */
     private Long id;
+
+    /**
+     * 表单名称
+     */
+    private String formName;
+
+    /**
+     * 表单路由地址
+     */
+    private String routeUrl;
+
+
+
+    /**
+     * 表单路由地址
+     */
+    private String domain;
+
 
     /**
      * json数据
@@ -53,6 +74,7 @@ public class FormGenerator implements Serializable {
     /**
      * 创建时间
      */
+    @TableField("fds")
     private LocalDateTime createTime;
 
     /**

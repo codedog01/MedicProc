@@ -63,10 +63,10 @@ spring:
       # 设置总上传的文件大小
       max-request-size: 20MB
   # 服务模块
-  devtools:
-    restart:
-      # 热部署开关
-      enabled: true
+#  devtools:
+#    restart:
+#      # 热部署开关
+#      enabled: false
   # redis 配置
   redis:
     # 地址
@@ -97,7 +97,7 @@ token:
   # 令牌密钥
   secret: abcdefghijklmnopqrstuvwxyz
   # 令牌有效期（默认30分钟）
-  expireTime: 600
+  expireTime: 36000000
 
 ## MyBatis配置
 #mybatis:
