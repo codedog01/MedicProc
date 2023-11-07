@@ -40,8 +40,8 @@ public class FormGeneratorController extends BaseController {
         return getDataTable(list);
     }
 
-    @PreAuthorize("@ss.hasPermi('form:list:add')")
-    @Log(title = "字典类型", businessType = BusinessType.INSERT)
+//    @PreAuthorize("@ss.hasPermi('form:list:add')")
+    @Log(title = "表单设计", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody FormMetadata formMetadata) {
         formMetadataService.save(formMetadata);

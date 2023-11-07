@@ -74,7 +74,6 @@ public class FormMetadata implements Serializable {
     /**
      * 创建时间
      */
-    @TableField("fds")
     private LocalDateTime createTime;
 
     /**
