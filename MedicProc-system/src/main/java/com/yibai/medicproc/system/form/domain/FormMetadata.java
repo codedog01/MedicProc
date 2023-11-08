@@ -1,9 +1,6 @@
 package com.yibai.medicproc.system.form.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,10 +24,10 @@ public class FormMetadata implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
     /**
      * id
      */
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
     /**
@@ -46,9 +43,10 @@ public class FormMetadata implements Serializable {
 
 
     /**
-     * 表单路由地址
+     * 版本号
      */
-    private String domain;
+    @Version
+    private Integer version;
 
 
     /**
