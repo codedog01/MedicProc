@@ -51,23 +51,25 @@ public class MybatisPlusConfig {
 
         @Override
         public void insertFill(MetaObject metaObject) {
+            //版本号默认值
+            this.strictInsertFill(metaObject, "createTime",  () -> 1, Integer.class);
             /*创建时间*/
-            this.strictInsertFill(metaObject, "createTime", LocalDateTime::now, LocalDateTime.class);
-            /*注册时间*/
-            this.strictInsertFill(metaObject, "registrationTime", LocalDateTime::now, LocalDateTime.class);
-            /*最后登录时间*/
-            this.strictUpdateFill(metaObject, "lastLoginTime", LocalDateTime::now, LocalDateTime.class);
-            /*上传时间*/
-            this.strictInsertFill(metaObject, "uploadTime", LocalDateTime::now, LocalDateTime.class);
-            /*更新时间*/
-            this.strictInsertFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
+//            this.strictInsertFill(metaObject, "createTime", LocalDateTime::now, LocalDateTime.class);
+//            /*注册时间*/
+//            this.strictInsertFill(metaObject, "registrationTime", LocalDateTime::now, LocalDateTime.class);
+//            /*最后登录时间*/
+//            this.strictUpdateFill(metaObject, "lastLoginTime", LocalDateTime::now, LocalDateTime.class);
+//            /*上传时间*/
+//            this.strictInsertFill(metaObject, "uploadTime", LocalDateTime::now, LocalDateTime.class);
+//            /*更新时间*/
+//            this.strictInsertFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
 
         }
 
         @Override
         public void updateFill(MetaObject metaObject) {
-            this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
-            this.strictUpdateFill(metaObject, "lastLoginTime", LocalDateTime::now, LocalDateTime.class);
+//            this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
+//            this.strictUpdateFill(metaObject, "lastLoginTime", LocalDateTime::now, LocalDateTime.class);
         }
     }
 
