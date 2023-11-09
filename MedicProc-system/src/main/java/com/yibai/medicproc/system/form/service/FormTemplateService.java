@@ -14,7 +14,7 @@ import java.util.Map;
  * @date 2023/11/6
  */
 public interface FormTemplateService extends IService<FormMetadata> {
-    Map<String, String> dbTableList();
+    Map<String, String> getEntityList();
 
-    List<DomainVO> domainDetail(String domain);
+    List<DomainVO> entityDetail(String entity);
 }

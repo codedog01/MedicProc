@@ -24,7 +24,7 @@ import java.util.*;
 @Service
 public class FormTemplateServiceImpl extends ServiceImpl<FormGeneratorMapper, FormMetadata> implements FormTemplateService {
     @Override
-    public Map<String, String> dbTableList() {
+    public Map<String, String> getEntityList() {
         String basePackage = "com.yibai";
         ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
         scanner.addIncludeFilter((metadataReader, metadataReaderFactory) -> metadataReader.getResource().getFile().getPath().contains("domain"));
@@ -44,10 +44,10 @@ public class FormTemplateServiceImpl extends ServiceImpl<FormGeneratorMapper, Fo
     }
 
     @Override
-    public List<DomainVO> domainDetail(String domain) {
+    public List<DomainVO> entityDetail(String entity) {
         ArrayList<DomainVO> domainVOS = new ArrayList<>();
         try {
-            Class<?> aClass = Class.forName(domain);
+            Class<?> aClass = Class.forName(entity);
             Field[] fields = aClass.getDeclaredFields();
 
             for (Field field : fields) {

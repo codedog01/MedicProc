@@ -1,7 +1,6 @@
 package com.yibai.medicproc.web.controller.form;
 
 import com.yibai.medicproc.common.core.domain.AjaxResult;
-import com.yibai.medicproc.system.form.service.FormMetadataService;
 import com.yibai.medicproc.system.form.service.FormTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,14 +22,14 @@ public class FormTemplateController {
     @Autowired
     FormTemplateService formTemplateService;
 
-    @GetMapping("/dbTableList")
-    public AjaxResult dbTableList() {
-        return success(formTemplateService.dbTableList());
+    @GetMapping("/getEntityList")
+    public AjaxResult getEntityList() {
+        return success(formTemplateService.getEntityList());
     }
 
-    @GetMapping("/domainDetail")
-    public AjaxResult domainDetail(String domain) {
-        return success(formTemplateService.domainDetail(domain));
+    @GetMapping("/entityDetail")
+    public AjaxResult entityDetail(String entity) {
+        return success(formTemplateService.entityDetail(entity));
     }
 
 
