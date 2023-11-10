@@ -25,7 +25,7 @@ import java.time.ZoneOffset;
  * @author 冷澳
  * @date 2023/11/8
  */
-@Configuration
+//@Configuration
 public class JacksonCustomizerConfig {
 
     /**
