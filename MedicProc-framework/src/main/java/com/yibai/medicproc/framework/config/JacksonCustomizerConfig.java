@@ -25,7 +25,7 @@ import java.time.ZoneOffset;
  * @author 冷澳
  * @date 2023/11/8
  */
-//@Configuration
+@Configuration
 public class JacksonCustomizerConfig {
 
     /**
@@ -80,9 +80,7 @@ public class JacksonCustomizerConfig {
     public static class LongSerializer extends JsonSerializer<Long> {
         @Override
         public void serialize(Long l, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-            if (l > 0) {
                 jsonGenerator.writeString(String.valueOf(l));
-            }
         }
     }
 
